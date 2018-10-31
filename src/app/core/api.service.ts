@@ -11,7 +11,7 @@ export class ApiService {
   baseUrl: string = 'http://localhost:8080/users/';
 
   login(loginPayload) : Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(this.baseUrl + 'token/generate-token', loginPayload);
+    return this.http.post<ApiResponse>('http://localhost:8080/' + 'token/generate-token', loginPayload);
   }
 
   getUsers() : Observable<ApiResponse> {
@@ -19,11 +19,11 @@ export class ApiService {
   }
 
   getUserById(id: number): Observable<ApiResponse> {
-    return this.http.get<User>(this.baseUrl + id);
+    return this.http.get<ApiResponse>(this.baseUrl + id);
   }
 
   createUser(user: User): Observable<ApiResponse> {
-    return this.http.post(this.baseUrl, user);
+    return this.http.post<ApiResponse>(this.baseUrl, user);
   }
 
   updateUser(user: User): Observable<ApiResponse> {
@@ -31,6 +31,6 @@ export class ApiService {
   }
 
   deleteUser(id: number): Observable<ApiResponse> {
-    return this.http.delete(this.baseUrl + id);
+    return this.http.delete<ApiResponse>(this.baseUrl + id);
   }
 }

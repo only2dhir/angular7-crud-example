@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {ApiService} from "../core/api.service";
-import {win} from "@angular/platform-browser/src/browser/tools/browser";
 
 @Component({
   selector: 'app-login',

@@ -4,7 +4,7 @@
     <h2 style="margin: auto">Login </h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="username">Email address:</label>
+        <label for="username">UserName:</label>
         <input type="text" class="form-control" formControlName="username" id="username" autocomplete="off">
         <div class="error" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">Username is required</div>
       </div>

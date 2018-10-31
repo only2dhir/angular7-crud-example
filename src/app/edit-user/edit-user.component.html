@@ -1,9 +1,12 @@
-<div class="col-md-6">
+<div class="col-md-6 user-container">
   <h2 class="text-center">Edit User</h2>
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div class="hidden">
+      <input type="text" formControlName="id" placeholder="id" name="id" class="form-control" id="id">
+    </div>
     <div class="form-group">
-      <label for="email">Email address:</label>
-      <input type="email" formControlName="email" placeholder="Email" name="email" class="form-control" id="email">
+      <label for="username">User Name:</label>
+      <input type="text" formControlName="username" placeholder="username" name="username" class="form-control" id="username" readonly="true">
     </div>
 
     <div class="form-group">
@@ -14,6 +17,16 @@
     <div class="form-group">
       <label for="lastName">Last Name:</label>
       <input formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" formControlName="age" placeholder="age" name="age" class="form-control" id="age">
+    </div>
+
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" formControlName="salary" placeholder="salary" name="salary" class="form-control" id="salary">
     </div>
 
     <button class="btn btn-success">Update</button>

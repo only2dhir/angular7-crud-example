@@ -7,7 +7,7 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import {ApiService} from "./core/api.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {routing} from "./app.routing";
 import {TokenInterceptor} from "./core/interceptor";
@@ -26,7 +26,9 @@ import {TokenInterceptor} from "./core/interceptor";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ApiService, TokenInterceptor],
+  providers: [ApiService, {provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi : true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

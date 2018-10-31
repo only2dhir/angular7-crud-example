@@ -24,14 +24,16 @@ export class EditUserComponent implements OnInit {
       return;
     }
     this.editForm = this.formBuilder.group({
-      id: [],
-      email: ['', Validators.required],
+      id: [''],
+      username: ['', Validators.required],
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required]
+      lastName: ['', Validators.required],
+      age: ['', Validators.required],
+      salary: ['', Validators.required]
     });
     this.apiService.getUserById(+userId)
       .subscribe( data => {
-        this.editForm.setValue(data);
+        this.editForm.setValue(data.result);
       });
   }
 
@@ -40,7 +42,12 @@ export class EditUserComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate(['list-user']);
+          if(data.status === 200) {
+            alert('User updated successfully.');
+            this.router.navigate(['list-user']);
+          }else {
+            alert(data.message);
+          }
         },
         error => {
           alert(error);

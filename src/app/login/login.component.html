@@ -4,17 +4,16 @@
     <h2 style="margin: auto">Login </h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="email">Email address:</label>
-        <input type="email" class="form-control" formControlName="email" id="email" autocomplete="off">
-        <div class="error" *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">Email is required</div>
-        <div class="error" *ngIf="loginForm.controls['email'].hasError('pattern')">Enter a valid email</div>
+        <label for="username">Email address:</label>
+        <input type="text" class="form-control" formControlName="username" id="username" autocomplete="off">
+        <div class="error" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">Username is required</div>
       </div>
       <div class="form-group">
         <label for="pwd">Password:</label>
         <input type="password" class="form-control" formControlName="password" id="pwd" autocomplete="off">
         <div class="error" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">Password is required</div>
       </div>
-      <button class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      <button class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
       <div *ngIf="invalidLogin" class="error">
         <div>Invalid credentials.</div>
       </div>
